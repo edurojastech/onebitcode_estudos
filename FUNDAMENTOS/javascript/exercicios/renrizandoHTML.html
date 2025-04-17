@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Interagindo com HTML - Usando JS</title>
+    <style>
+      main { display: grid; gap: 20px; }
+    </style>
+  </head>
+  <body>
+    <main id="main">
+      <div id="elemento01"></div>
+      <div id="elemento02"></div>
+      <div id="elemento03"></div>
+      <div id="elemento04"></div>
+      <label for="elemento05">
+        <input type="text" id="elemento05" value="JS">
+      </label>
+    </main>
+
+    <script>
+      /* 
+        Interagindo com a HTML: Utilizando as propiedades 
+        innerText, innerHTML, textContent e value
+      
+        => innerText: Usado em qualquer elemento e retorna apenas o texto visível.
+        => innerHTML: Serve para renderizar - manipular elementos HTML.
+        => textContent: Serve para usar em qualquer elemento, e retornar apenas o conteúdo ou textos visível e oculto
+        => value: Utilizando para manipular dados de elementos de formulários, ex: inputs, textArea, select, submit, etc.
+
+      */
+
+      let conteudo = `Lorem ipsum dolor sit, amet consectetur adipisicing elit.`;
+      let title = document.querySelector("#elemento01").innerHTML = "<h1>Interagindo com HTML - Usando JS</h1>"
+      let textos = document.querySelector("#elemento02").innerHTML = `<p>${conteudo}</p>`
+      let div03 = document.getElementById("elemento03").innerText = `<p> INSERINDO TEXTO NO ELEMENTO 03 </p>`
+      let div04 = document.getElementById("elemento04").textContent = `<p> INSERINDO TEXTO NO ELEMENTO 04 </p>`
+      let input = document.getElementById("elemento05").value
+
+      console.log(title)
+      console.log(textos)
+      console.log(div03)
+      console.log(div04)
+      console.log(input)
+    </script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt--br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exibindo dados digitando no Input</title>
+</head>
+<body>
+  <h1>Cor de Fundo</h1>
+  <label for="info"> Insira uma cor: </label>
+  <br />
+  <textarea name="info" id="info" cols="30" rows="1"></textarea>
+  <p id="resultado">
+    Sem cor informada
+  </p>
+
+  <!-- Elemento HTML -->
+  <button id="btnMudarCor">Mudar Cor de Fundo</button>
+
+  <!-- Code JS -->
+  <script>
+    let btn = document.querySelector("#btnMudarCor")
+  </script>
+
+  <!-- <script>
+    const inputInfo = document.querySelector("#info")
+    // const btnMostrar = document.querySelector("#btnMostrar")
+    let resultadoInfo = document.querySelector("#resultado")
+
+    inputInfo.addEventListener('keyup', () => {
+      resultadoInfo.textContent = inputInfo.value || 'Sem informação!'
+    })
+
+    btnMostrar.addEventListener('click', () => {
+      document.body.style.backgroundColor = resultadoInfo.textContent === "Sem informação!" ? "#fff" : resultadoInfo.textContent
+      document.body.style.color = resultadoInfo.textContent === "Sem informação!" ? "#000" : "#fff"
+    })
+  </script> -->
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prevent Default</title>
+</head>
+<body>
+
+  <h3>FORM</h3>
+  <form>
+    <label for="nome">
+      Nome: 
+      <input type="text" name="nome" id="nome">
+    </label>
+
+    <br><br>
+
+    <label for="idade">
+      Idade: 
+      <input type="text" name="idade" id="idade" maxlength="2">
+    </label>
+
+    <br><br>
+
+    <button type="submit" id="cadastrar">
+      Cadastrar
+    </button>
+
+    <button type="button" id="limparForm">
+      Limpar
+    </button>
+
+  </form>
+
+
+  <script>
+
+    const btnCadastrar = document.getElementById("cadastrar")
+    const btnLimpar = document.getElementById("limparForm")
+    const inputNome = document.getElementById("nome")
+    const inputIdade= document.getElementById("idade")
+
+    function limparCampos () {
+      inputNome.value = ""
+      inputIdade.value = ""
+    }
+
+    btnLimpar.addEventListener('click', () => limparCampos())
+    btnCadastrar.addEventListener('click', (e) => {
+      e.preventDefault()
+      if(inputNome.value == "" && inputIdade.value == ""){
+        alert('Dados não informado!')
+      }else if(inputNome.value == ""){
+        alert('Nome não informado!')
+      }else if(inputIdade.value == ""){
+        alert('Idade não informada!')
+      } 
+      else {
+        alert(`
+          Nome: ${inputNome.value}
+          Idade: ${inputIdade.value}
+        `)
+        limparCampos()
+      }    
+    })
+   
+  </script>
+</body>
+</html>

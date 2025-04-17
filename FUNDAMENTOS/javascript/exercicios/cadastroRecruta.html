@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Recruta</title>
+</head>
+<body>
+  <!-- 
+    Cadastro de Recrutas
+    Escreva um programa em javascript que permita salvar informações de um recruta. As informações a serem salvas são:
+    - o primeiro nome
+    - o sobrenome
+    - o campo de estudo
+    - o ano de nascimento
+    Depois o programa deve exibir o nome completo do recruta, seu campo de estudo e sua idade (apenas baseada no ano de nascimento).
+  -->  
+  <script>
+    const anoAtual = new Date().getFullYear()
+    const Recruta = {
+      nome: prompt("Qual seu nome?"),
+      sobrenome: prompt("Qual seu sobrenome?"),
+      estudos: prompt("campo de estudo: 1) FrontEnd 2) BackEnd 3) FullStack"),
+      anoNascimento: prompt("Ano de nascimento (Ex: 1999): "),
+
+      exibirDados() {
+        alert( `
+          ==== Dados do Recruta ====
+          Nome completo: ${this.nome} ${this.sobrenome}
+          campo de Estudos: ${this.estudos}
+          Idade: ${anoAtual - this.anoNascimento} anos
+        `
+        )
+      }
+    }    
+    Recruta.exibirDados()
+  </script>
+</body>
+</html>

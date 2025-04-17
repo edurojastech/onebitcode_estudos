@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Recruta</title>
+  <style>
+    button {
+      background-color: tomato;
+      color: #FFF;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 10px;
+      margin: 100px auto;
+      display: block;
+      font-size: 24px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <!-- 
+    Calculadora de 4 Operações
+    Escreve um programa em javascript que permita inserir dois valores numéricos e 
+    então calcule o resultado das quatro operações básicas (soma, subtração, multiplicação e divisão).
+    Após calcular os resultados o programa deve exibi-los na tela.
+  -->  
+  <button onclick="calculadora()">Abrir Calculadora</button>
+  <script defer>
+    function calculadora () {
+      const n1 = parseInt(prompt('Valor 1: '))
+      const n2 = parseInt(prompt('Valor 2: '))
+      const soma = n1 + n2
+      const subt = n1 - n2
+      const mult = n1 * n2
+      const divs = n1 / n2
+
+      alert(`
+        ==== Calculadora Simples ====
+        Foram informados os valores: ${n1} e ${n2}
+        Operações: 
+          Soma: ${n1} + ${n2} = ${soma}
+          Subtração: ${n1} - ${n2} = ${subt}
+          Mutiplicação: ${n1} * ${n2} = ${mult}
+          Divisão: ${n1} / ${n2} = ${divs}
+      `)
+    }
+
+  </script>
+</body>
+</html>
