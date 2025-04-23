@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Palíndromos</title>
+</head>
+<body>
+  <!-- palíndromos -->
+
+  <script>
+    const palavra = prompt('Insira uma palavra').toLocaleLowerCase()
+    const palavraInvertida = palavra.split('').reverse().toString().replaceAll(',', '')
+    
+    if(palavra == palavraInvertida){
+      alert(`A palavara é sim Palíndromo: ${palavra} == ${palavraInvertida}`)
+    }else {
+      alert(`A palavara não é Palíndromo: ${palavra} diferente de ${palavraInvertida}`)
+    }
+  </script>
+
+</body>
+</html>
