@@ -5,74 +5,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Clínica Saúde Viva</title>
   <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
-<body class="font-sans text-gray-800">
+<body class="font-sans text-gray-800 bg-blue-50">
+  <div class="px-6 py-3 text-center">
+    <button class="bg-blue-600 text-white px-6 py-3 rounded" onclick="showContent()">Show Content</button>
+    <button class="bg-blue-600 text-white px-6 py-3 rounded" onclick="hideContent()">Hide Content</button>
+  </div>
 
-  <!-- Header -->
-  <header class="bg-blue-600 text-white p-4 flex justify-between items-center">
-    <h1 class="text-xl font-bold">Clínica Saúde Viva</h1>
-    <a href="#contato" class="bg-white text-blue-600 px-4 py-2 rounded">Agende sua consulta</a>
-  </header>
-
-  <!-- Hero -->
-  <section class="bg-blue-50 p-8 text-center">
-    <h2 class="text-3xl font-bold mb-2">Cuidando da sua saúde com carinho e excelência</h2>
-    <p class="text-lg">Atendimento personalizado para você e sua família</p>
-    <a href="#contato" class="mt-4 inline-block bg-blue-600 text-white px-6 py-3 rounded">Fale com a gente</a>
-  </section>
-
-  <!-- Sobre a Clínica -->
-  <section id="sobre" class="p-8">
-    <h3 class="text-2xl font-bold mb-4">Sobre a Clínica</h3>
-    <p>Somos referência em cuidados médicos, com uma equipe especializada em diversas áreas da saúde, atendendo com conforto, segurança e atenção individualizada.</p>
-  </section>
-
-  <!-- Serviços -->
-  <section id="servicos" class="bg-blue-50 p-8">
-    <h3 class="text-2xl font-bold mb-4">Nossos Serviços</h3>
-    <ul class="grid grid-cols-1 md:grid-cols-3 gap-4">
-      <li class="bg-white p-4 rounded shadow">Consulta Médica</li>
-      <li class="bg-white p-4 rounded shadow">Exames Laboratoriais</li>
-      <li class="bg-white p-4 rounded shadow">Psicologia e Terapia</li>
-      <li class="bg-white p-4 rounded shadow">Nutrição</li>
-      <li class="bg-white p-4 rounded shadow">Fisioterapia</li>
-      <li class="bg-white p-4 rounded shadow">Vacinação</li>
-    </ul>
-  </section>
-
-  <!-- Equipe -->
-  <section id="equipe" class="p-8">
-    <h3 class="text-2xl font-bold mb-4">Nossa Equipe</h3>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-      <div class="text-center">
-        <img src="https://via.placeholder.com/150" alt="Dr. João" class="mx-auto rounded-full mb-2">
-        <h4 class="font-bold">Dr. João Silva</h4>
-        <p>Médico Clínico</p>
-      </div>
-      <div class="text-center">
-        <img src="https://via.placeholder.com/150" alt="Dra. Ana" class="mx-auto rounded-full mb-2">
-        <h4 class="font-bold">Dra. Ana Lima</h4>
-        <p>Psicóloga</p>
-      </div>
-      <div class="text-center">
-        <img src="https://via.placeholder.com/150" alt="Dr. Pedro" class="mx-auto rounded-full mb-2">
-        <h4 class="font-bold">Dr. Pedro Souza</h4>
-        <p>Nutricionista</p>
-      </div>
+  <template>
+    <div class="hero">
+      <section class="bg-blue-50 p-8 text-center card border">
+        <h2 class="text-3xl font-bold mb-2 title"></h2>
+        <p class="text-lg subtitle"></p>
+        <a href="#contato" class="mt-4 inline-block bg-blue-600 text-white px-6 py-3 rounded">Fale com a gente</a>
+      </section>
     </div>
-  </section>
+  </template>
+ 
 
-  <!-- Contato -->
-  <section id="contato" class="bg-blue-600 text-white p-8 text-center">
-    <h3 class="text-2xl font-bold mb-4">Entre em Contato</h3>
-    <p>📞 (99) 99999-9999 | 📧 contato@saudeviva.com</p>
-    <a href="https://wa.me/5599999999999" class="mt-4 inline-block bg-white text-blue-600 px-6 py-3 rounded">Chamar no WhatsApp</a>
-  </section>
+  <script defer>
+    let qtd = 0
+    let temp = document.getElementsByTagName("template")[0]
+    const listDados = [
+      {
+        title: 'Cuidando da sua saúde com excelência',
+        subtitle: 'Atendimento personalizado para você'
+      },
+      {
+        title: 'Cuidando da sua saúde com carinho',
+        subtitle: 'Atendimento personalizado para sua família'
+      },
+      {
+        title: 'Melhore sua Saúde agora!',
+        subtitle: 'Atendimento humanizado'
+      }
+    ]
+    
+    function showContent() {
+      if(qtd !== listDados.length) {       
+        for (let i = 0; i < listDados.length; i++) {
+          let clon = temp.content.cloneNode(true)
+          document.body.appendChild(clon)
+          document.querySelectorAll('.title')[qtd].textContent = listDados[qtd].title
+          document.querySelectorAll('.subtitle')[qtd].textContent = listDados[qtd].subtitle
+          qtd++
+        }
+      }
+    }
 
-  <!-- Footer -->
-  <footer class="bg-blue-800 text-white text-center p-4">
-    © 2025 Clínica Saúde Viva. Todos os direitos reservados.
-  </footer>
-
+    function hideContent() {
+      const hero = document.querySelectorAll('.hero')
+      for (let i = 0; i < hero.length; i++) {
+        hero[i].remove()
+      }
+      qtd = 0
+    }
+  </script>
 </body>
 </html>
