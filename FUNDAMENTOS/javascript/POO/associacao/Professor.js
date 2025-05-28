@@ -22,6 +22,12 @@ class Auth {
   }
 }
 
-const conta1 = new Auth('edurojas@gmail.com', 55)
-const validacao = conta1.login('edurojas@gmail.com', 55)
+const account = {
+  mail: 'edurojas@gmail.com',
+  password: 450
+}
+
+const { mail, password } = account
+const auth = new Auth(mail, password)
+const validacao = auth.login( mail, 450)
 console.log(validacao)

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Web APIs na Prática</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    .box { padding: 10px; margin-bottom: 10px; background: #eef; border-radius: 5px; }
+    .destacado { background: #ffc; }
+  </style>
+</head>
+<body>
+
+  <h1 id="titulo">Web APIs em ação</h1>
+  <button id="adicionar">Adicionar Elemento</button>
+  <button id="destacar">Destacar Elementos</button>
+  <div id="conteudo" class="box">
+    <p>Texto inicial</p>
+  </div>
+
+  <h3>Textos encontrados:</h3>
+  <ul id="textos"></ul>
+
+  <script>
+ 
+
+    
+
+    // Destaca os elementos <p>
+    btnDestacar.addEventListener('click', () => {
+      const paragrafos = conteudo.querySelectorAll('p');
+      paragrafos.forEach(p => p.classList.toggle('destacado'));
+    });
+
+    // Observa alterações no DOM
+    const observer = new MutationObserver(mutations => {
+      console.log('Mutação detectada!');
+      listarTextos();
+    });
+
+    observer.observe(conteudo, { childList: true, subtree: true });
+
+    // Usa TreeWalker para pegar os textos dentro do #conteudo
+    function listarTextos() {
+      ulTextos.innerHTML = '';
+      const walker = document.createTreeWalker(conteudo, NodeFilter.SHOW_TEXT);
+      let node;
+      while ((node = walker.nextNode())) {
+        const texto = node.textContent.trim();
+        if (texto) {
+          const li = document.createElement('li');
+          li.textContent = texto;
+          ulTextos.appendChild(li);
+        }
+      }
+    }
+
+    listarTextos(); // Chamada inicial
+  </script>
+
+</body>
+</html>

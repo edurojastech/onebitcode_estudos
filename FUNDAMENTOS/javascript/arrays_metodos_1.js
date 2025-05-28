@@ -8,6 +8,15 @@ const listaFrutas = [
   "Ameixa",
 ];
 
+const keyWord = 'Laranja'
+console.log(removeItemArray(listaFrutas))
+console.log(listaFrutas)
+
+
+function removeItemArray (lista) {
+  return lista.splice(lista.indexOf(keyWord), 1)
+}
+
 // push() adiciona no final do array
 listaFrutas.push("Kiwi", "Manga");
 console.log(listaFrutas);
