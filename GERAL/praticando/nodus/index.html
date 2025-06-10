@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <!-- CDN NODUS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@nodusjs/x@latest/dist/x.css">
+  <script src="https://cdn.jsdelivr.net/npm/@nodusjs/x@latest/dist/x.iife.js" defer></script>
+
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .main {
+      overflow: hidden;
+      display: flex;
+      height: 100vh;
+    }
+
+    .imagem,
+    .form {
+      width: 50%;
+      height: 100%;
+      display: block;
+    }
+
+    .bg {
+      max-height: 100%;
+      display: block;
+    }
+
+    .form {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main">
+    <div class="imagem">
+      <img src="./img.webp"  class="bg">
+    </div>
+    <div class="form">
+      <div style="height: 50%;">
+        <x-heading>
+          Bem vindo ao CepConsulta!
+        </x-heading>
+
+        <x-form>
+          <x-stack>
+            <template>
+            <x-input name="cep" required>
+              <x-label>CEP</x-label>
+              <x-validity state="valueMissing">CEP eh obrigatorio</x-validity>
+            </x-input>
+
+            <x-input name="estado" readonly>
+              <x-label>Estado</x-label>
+              <x-on value="api/ok:attribute/value|prop=estado"></x-on>
+              <x-on value="api/error:method/reset"></x-on>
+            </x-input>
+
+            <x-input name="cidade" readonly>
+              <x-label>Cidade</x-label>
+              <x-on value="api/ok:attribute/value|prop=localidade"></x-on>
+              <x-on value="api/error:method/reset"></x-on>
+            </x-input>
+
+            <x-input name="bairro" readonly>
+              <x-label>Bairro</x-label>
+              <x-on value="api/ok:attribute/value|prop=bairro"></x-on>
+              <x-on value="api/error:method/reset"></x-on>
+            </x-input>
+
+            <x-input name="rua" readonly>
+              <x-label>Rua</x-label>
+              <x-on value="api/ok:attribute/value|prop=logradouro"></x-on>
+              <x-on value="api/error:method/reset"></x-on>
+            </x-input>
+
+            <x-input name="complemento">
+              <x-label>Complemento</x-label>
+              <x-on value="api/error:method/reset"></x-on>
+            </x-input>
+
+            <x-button>Submit</x-button>
+          </template>
+          </x-stack>
+        </x-form>
+
+        <x-fetch name="api" url="https://viacep.com.br/ws/{}/json">
+          <x-on value="cep/change:method/get"></x-on>
+        </x-fetch>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.querySelector("x-form").addEventListener('submit', e => console.log(e.detail))
+  </script>
+</body>
+
+</html>
